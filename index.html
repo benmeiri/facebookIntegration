@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <script type="text/javascript"  src="lib/underscore-min.js"></script>
+    <script type="text/javascript"  src="lib/angular/angular.js"></script>
+    <script type="text/javascript"  src="js/index.js"></script>
+    <title>beb</title>
+</head>
+<body>
+
+<div ng-controller="MainController" id="fb-root">
+
+    <button class="btn" ng-click="alert()">Start</button>
+    <input type="text" ng-model="linkAddress"/>
+    <button class="btn" ng-click="findBestLikes()">Calculate</button>
+</div>
+<!--<script>(function(d, s, id) {-->
+    <!--var js, fjs = d.getElementsByTagName(s)[0];-->
+    <!--if (d.getElementById(id)) return;-->
+    <!--js = d.createElement(s); js.id = id;-->
+    <!--js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=222129187952689";-->
+    <!--fjs.parentNode.insertBefore(js, fjs);-->
+<!--}(document, 'script', 'facebook-jssdk'));</script>-->
+
+            <!--<div class="master-view"></div>-->
+<!--<div class="fb-follow"-->
+     <!--data-href="http://www.facebook.com/ben.meiri"-->
+     <!--data-width="100px"-->
+     <!--data-height="50px"-->
+     <!--data-colorscheme="light"-->
+     <!--data-layout="standard"-->
+     <!--data-show-faces="true">-->
+
+     <!--</div>-->
+<!--<div class="fb-follow"-->
+     <!--data-href="http://www.facebook.com/etai.erlich"-->
+     <!--data-width="100px"-->
+     <!--data-height="50px"-->
+     <!--data-colorscheme="light"-->
+     <!--data-layout="standard"-->
+     <!--data-show-faces="true">-->
+
+<!--</div>-->
+
+</body>
+</html>
