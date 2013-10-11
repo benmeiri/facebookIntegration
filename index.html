@@ -1,46 +1,92 @@
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html ng-app>
-<head>
-    <script type="text/javascript"  src="lib/underscore-min.js"></script>
-    <script type="text/javascript"  src="lib/angular/angular.js"></script>
-    <script type="text/javascript"  src="js/index.js"></script>
-    <title>beb</title>
+<head >
+
+    <meta charset="utf-8">
+    <title>HP FrontEnd Course</title>
+
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Step1.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-resource.js"></script>
+    <script src="lib/jquery-1.10.2.js"></script>
+    <!--<script src="js/staticData.js"></script>-->
+    <!--<script src="js/index.js"></script>-->
+    <script src="js/Controllers.js"  ></script>
+
 </head>
-<body>
+<body  >
+<!--js loading-->
 
-<div ng-controller="MainController" id="fb-root">
 
-    <button class="btn" ng-click="alert()">Start</button>
-    <input type="text" ng-model="linkAddress"/>
-    <button class="btn" ng-click="findBestLikes()">Calculate</button>
+<!--master view-->
+
+<div ng-controller="MasterView" class="container master-view">
+<div class="page-header">
+    <h1>HP Front End Course</h1>
 </div>
-<!--<script>(function(d, s, id) {-->
-    <!--var js, fjs = d.getElementsByTagName(s)[0];-->
-    <!--if (d.getElementById(id)) return;-->
-    <!--js = d.createElement(s); js.id = id;-->
-    <!--js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=222129187952689";-->
-    <!--fjs.parentNode.insertBefore(js, fjs);-->
-<!--}(document, 'script', 'facebook-jssdk'));</script>-->
 
-            <!--<div class="master-view"></div>-->
-<!--<div class="fb-follow"-->
-     <!--data-href="http://www.facebook.com/ben.meiri"-->
-     <!--data-width="100px"-->
-     <!--data-height="50px"-->
-     <!--data-colorscheme="light"-->
-     <!--data-layout="standard"-->
-     <!--data-show-faces="true">-->
+<div class="row"  id="middle">
 
-     <!--</div>-->
-<!--<div class="fb-follow"-->
-     <!--data-href="http://www.facebook.com/etai.erlich"-->
-     <!--data-width="100px"-->
-     <!--data-height="50px"-->
-     <!--data-colorscheme="light"-->
-     <!--data-layout="standard"-->
-     <!--data-show-faces="true">-->
+    <div class="span4" ng-controller="LeftSidebar"  id="leftSide">
 
-<!--</div>-->
+        <div   class="rightListItem">
+            <input type="text" class="searchInput" ng-model="searchQuery" placeholder="Search...">
+            <button class="btn searchButton"  ng-click="searchText(searchQuery)">Search</button>
+            <div>
+                <input class="filterInput" ng-model="filterQuery.title" type="text" placeholder="Filter Video"/>
+            </div>
+        </div>
+
+        <div class="videoList" >
+            <ul class="unstyled">
+                <li ng-repeat="video in videos | filter:filterQuery"  id="{{video.id}}" >
+                    <h5>{{video.title}}</h5>
+                    <div class="listVideoItem">
+                        <div>
+                            <img class="videoImage" src="{{video.thumbnail.hqDefault}}"/>
+                        </div><button  class="btn add-to-playlist-button" ng-click="addToPlaylist(video)">Add</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="span3" >
+            <div class="mainVideo" >
+                <iframe class="videoDisplay"
+                        src="{{videoLink}}" >
+                </iframe>
+            </div>
+
+    </div>
+
+</div>
+<div class="row" id="strip">
+    <div class="playList">
+        <ul class="inline">
+            <li ng-repeat="playlistVideo in playList " class="playListItem" id="{{playlistVideo.id}}" >
+               <div class="playListInner">
+                   <h5>{{playlistVideo.title}}</h5>
+                   <div>
+                       <img class="videoImage" src="{{playlistVideo.thumbnail.hqDefault}}"/>
+                   </div>
+                   <div class="videoImageButtonBar">
+                       <button class="btn select-video-btn" ng-click="selectVideo(playlistVideo.id)">Select</button>
+                       <button class="btn btn-danger remove-video-btn" ng-click="removeVideo(playlistVideo.id)">Remove</button>
+                   </div>
+               </div>
+
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+</div>
+
+
+
 
 </body>
 </html>
